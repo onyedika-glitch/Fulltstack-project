@@ -1,9 +1,17 @@
 {
   "data": {
     "createDepartment": {
-      "id": 1,
+      "id": 2,
       "name": "Finance",
-      "subDepartments": []
+      "subDepartments": [
+        {
+          "id": 3,
+          "name": "Accounts"
+        },
+        {
+          "id": 4,
+          "name": "Audit"
+        }
+      ]
     }
   }
-}
