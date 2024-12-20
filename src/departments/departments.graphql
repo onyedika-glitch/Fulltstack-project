@@ -20,6 +20,12 @@ input CreateDepartmentInput {
   subDepartments: [SubDepartmentInput]
 }
 
+input UpdateDepartmentInput {
+  id: ID!
+  name: String!
+}
+
 type Mutation {
   createDepartment(input: CreateDepartmentInput!): Department!
+  updateDepartment(input: UpdateDepartmentInput!): Department! # New mutation for updating a department
 }
