@@ -1,14 +1,22 @@
+// src/department/department.resolver.ts
+
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
-import { DepartmentsService } from './departments.service';
-import { Department } from './departments.entity';
-import { CreateDepartmentDto } from './create-departments.dto';
+import { DepartmentService } from './department.service';
+import { CreateDepartmentInput } from './dto/create-department.input';
+import { UpdateDepartmentInput } from './dto/update-department.input';
+import { Department } from './department.model';
 
 @Resolver(of => Department)
-export class DepartmentsResolver {
-  constructor(private departmentsService: DepartmentsService) {}
+export class DepartmentResolver {
+  constructor(private readonly departmentService: DepartmentService) {}
 
   @Mutation(returns => Department)
-  async createDepartment(@Args('createDepartmentData') createDepartmentData: CreateDepartmentDto) {
-    return this.departmentsService.create(createDepartmentData);
+  async createDepartment(@Args('input') input: CreateDepartmentInput): Promise<Department> {
+    return this.departmentService.create(input);
+  }
+
+  @Mutation(returns => Department)
+  async updateDepartment(@Args('input') input: UpdateDepartmentInput): Promise<Department> {
+    return this.departmentService.update(input);
   }
 }
