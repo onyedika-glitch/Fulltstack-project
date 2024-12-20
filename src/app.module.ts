@@ -12,9 +12,9 @@ import { SubDepartmentsModule } from './sub-departments/sub-departments.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'your_username',
-      password: 'your_password',
-      database: 'your_database',
+      username: 'PostgresOmogo',
+      password: 'Godis@10',
+      database: 'Postegres',
       autoLoadEntities: true,
       synchronize: true, // Set to false in production
     }),
