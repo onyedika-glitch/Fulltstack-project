@@ -9,6 +9,7 @@ type Department {
 type SubDepartment {
   id: ID!
   name: String!
+  department: Department!
 }
 
 input SubDepartmentInput {
@@ -25,7 +26,26 @@ input UpdateDepartmentInput {
   name: String!
 }
 
+input CreateSubDepartmentInput {
+  name: String!
+  departmentId: ID!
+}
+
+input UpdateSubDepartmentInput {
+  id: ID!
+  name: String!
+}
+
 type Mutation {
   createDepartment(input: CreateDepartmentInput!): Department!
-  updateDepartment(input: UpdateDepartmentInput!): Department! # New mutation for updating a department
+  updateDepartment(input: UpdateDepartmentInput!): Department!
+  deleteDepartment(id: ID!): Boolean! # New mutation for deleting a department
+  createSubDepartment(input: CreateSubDepartmentInput!): SubDepartment!
+  updateSubDepartment(input: UpdateSubDepartmentInput!): SubDepartment!
+  deleteSubDepartment(id: ID!): Boolean! # Mutation to delete a sub-department
+}
+
+type Query {
+  subDepartment(id: ID!): SubDepartment
+  subDepartments: [SubDepartment]
 }
